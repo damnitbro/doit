@@ -15,7 +15,7 @@ print "login success"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-helpMessage =""" Chivas Bot
+helpMessage =""" йѻ‽€
 [Id︎]
 [Mid]
 [Me︎]
@@ -50,7 +50,7 @@ helpMessage =""" Chivas Bot
 [Gn 「group name」]
 [Nk 「name」]
 
-[*] Command kicker only [*]
+[*] Command Admin only [*]
 
 [Bye]
 [Kill ban]
@@ -76,7 +76,7 @@ Bmid = kk.getProfile().mid
 Cmid = kc.getProfile().mid
 
 Bots=[mid,Amid,Bmid,Cmid]
-admin=["YOUR_MID_HERE"]
+admin=["u3ac8d486c3e1a75b0c8d4284feae285f"]
 wait = {
     'contact':True,
     'autoJoin':True,
@@ -91,8 +91,8 @@ wait = {
     "commentBlack":{},
     "wblack":False,
     "dblack":False,
-    "clock":True,
-    "cName":"Chivas ",
+    "clock":False,
+    "cName":"йѻ‽€ ",
     "blacklist":{},
     "wblacklist":False,
     "dblacklist":False,
@@ -100,7 +100,7 @@ wait = {
     "atjointicket":False
     }
 
-wait2 = {
+wait = {
     'readPoint':{},
     'readMember':{},
     'setTime':{},
@@ -108,7 +108,7 @@ wait2 = {
     }
 
 setTime = {}
-setTime = wait2['setTime']
+setTime = wait['setTime']
 
 
 def sendMessage(to, text, contentMetadata={}, contentType=0):
@@ -122,13 +122,13 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
 
 def NOTIFIED_READ_MESSAGE(op):
     try:
-        if op.param1 in wait2['readPoint']:
+        if op.param1 in wait['readPoint']:
             Name = cl.getContact(op.param2).displayName
-            if Name in wait2['readMember'][op.param1]:
+            if Name in wait['readMember'][op.param1]:
                 pass
             else:
-                wait2['readMember'][op.param1] += "\n・" + Name
-                wait2['ROM'][op.param1][op.param2] = "・" + Name
+                wait['readMember'][op.param1] += "\n・" + Name
+                wait['ROM'][op.param1][op.param2] = "・" + Name
         else:
             pass
     except:
@@ -1321,33 +1321,33 @@ def bot(op):
                 else:
                     cl.sendText(msg.to,"Please turn on the name clock")
 
-            elif msg.text == "$set":
-                    cl.sendText(msg.to, "Check sider")
-                    ki.sendText(msg.to, "Check sider")
-                    kk.sendText(msg.to, "Check sider")
-                    kc.sendText(msg.to, "Check sider")
+            elif msg.text == "Setview":
+                    cl.sendText(msg.to, "CCTV Set!")
+                    ki.sendText(msg.to, "Analyzing/./././")
+                    kk.sendText(msg.to, "Wait A Second!")
+                    kc.sendText(msg.to, "Already Set!")
                     try:
-                        del wait2['readPoint'][msg.to]
-                        del wait2['readMember'][msg.to]
+                        del wait['readPoint'][msg.to]
+                        del wait['readMember'][msg.to]
                     except:
                         pass
-                    wait2['readPoint'][msg.to] = msg.id
-                    wait2['readMember'][msg.to] = ""
-                    wait2['ROM'][msg.to] = {}
-                    print wait2
-            elif msg.text == "$read":
-                    if msg.to in wait2['readPoint']:
-                        if wait2["ROM"][msg.to].items() == []:
+                    wait['readPoint'][msg.to] = msg.id
+                    wait['readMember'][msg.to] = ""
+                    wait['ROM'][msg.to] = {}
+                    print wait
+            elif msg.text == "View":
+                    if msg.to in wait['readPoint']:
+                        if wait["ROM"][msg.to].items() == []:
                             chiya = ""
                         else:
                             chiya = ""
-                            for rom in wait2["ROM"][msg.to].items():
+                            for rom in wait["ROM"][msg.to].items():
                                 print rom
                                 chiya += rom[1] + "\n"
 
-                        cl.sendText(msg.to, "People who readed %s\nthat's it\n\nPeople who have ignored reads\n%sIt is abnormal ♪\n\nReading point creation date n time:\n[%s]"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
+                        cl.sendText(msg.to, "TerCyduk Oleh Bot:u %s\Total Read\n\nPeople Riwayat Read\n%sIgnore Read ♪\n\nReading point creation date n time:\n[%s]"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
                     else:
-                        cl.sendText(msg.to, "An already read point has not been set.\n「set」you can send ♪ read point will be created ♪")
+                        cl.sendText(msg.to, "An already read point has not been set.\n「View」you can send ♪ read point will be created ♪")
 #-----------------------------------------------
 
 #-----------------------------------------------
